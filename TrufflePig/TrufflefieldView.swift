@@ -39,5 +39,9 @@ class TrufflefieldView: UIView {
             currentNodeCoordinate.x = 0
             currentNodeCoordinate.y += dy
         }
+        
+        if currentNodeCoordinate.y >= bounds.size.height - (dy / 2) {
+            currentNodeCoordinate.y = 0
+        }
     }
 }

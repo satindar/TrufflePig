@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FieldNodeDelegate {
+    func didClickFieldNodeWithItemValue(value: Int)
+}
+
 class FieldNodeView: UIView {
     let item: Int
 
@@ -30,6 +34,17 @@ class FieldNodeView: UIView {
         
         layer.borderColor = UIColor.blackColor().CGColor
         layer.borderWidth = 0.5
+        
+        let nodeButton = UIButton(frame: self.bounds)
+        nodeButton.backgroundColor = UIColor.whiteColor()
+        nodeButton.layer.borderColor = UIColor.blackColor().CGColor
+        nodeButton.layer.borderWidth = 0.75
+        nodeButton.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(nodeButton)
+    }
+    
+    func buttonClicked(sender: UIButton) {
+        sender.removeFromSuperview()
     }
     
     func textForItemValue() -> String {
