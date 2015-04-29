@@ -8,17 +8,23 @@
 
 import UIKit
 
-protocol FieldNodeDelegate {
-    func didClickFieldNodeWithItemValue(value: Int)
+protocol FieldNodeDelegate: class {
+    func clickedFieldNodeWithIndexValue(sender: FieldNodeView)
 }
 
 class FieldNodeView: UIView {
     let item: Int
+    let indexValue: Int
+    var unearthed: Bool
 
-    init(itemInNode: Int, frame: CGRect) {
+    init(itemInNode: Int, selected: Bool, frame: CGRect, index: Int) {
         self.item = itemInNode
+        self.unearthed = selected
+        self.indexValue = index
         super.init(frame: frame)
     }
+    
+    weak var delegate: FieldNodeDelegate?
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,15 +41,19 @@ class FieldNodeView: UIView {
         layer.borderColor = UIColor.blackColor().CGColor
         layer.borderWidth = 0.5
         
-        let nodeButton = UIButton(frame: self.bounds)
-        nodeButton.backgroundColor = UIColor.whiteColor()
-        nodeButton.layer.borderColor = UIColor.blackColor().CGColor
-        nodeButton.layer.borderWidth = 0.75
-        nodeButton.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.addSubview(nodeButton)
+        if unearthed == false {
+            let nodeButton = UIButton(frame: self.bounds)
+            nodeButton.backgroundColor = UIColor.whiteColor()
+            nodeButton.layer.borderColor = UIColor.blackColor().CGColor
+            nodeButton.layer.borderWidth = 0.75
+            nodeButton.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            self.addSubview(nodeButton)
+        }
     }
     
     func buttonClicked(sender: UIButton) {
+        delegate?.clickedFieldNodeWithIndexValue(self)
+        self.unearthed = true
         sender.removeFromSuperview()
     }
     

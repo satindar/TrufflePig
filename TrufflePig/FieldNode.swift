@@ -15,4 +15,8 @@ struct FieldNode {
     init(itemValue value: Int) {
         itemValue = value
     }
+    
+    func isTruffle() -> Bool {
+        return itemValue == -1
+    }
 }
