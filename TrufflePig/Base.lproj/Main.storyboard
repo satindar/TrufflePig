@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Q0F-xn-Yh8" customClass="TrufflefieldView" customModule="TrufflePig" customModuleProvider="target">
+                            <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0F-xn-Yh8" customClass="TrufflefieldView" customModule="TrufflePig" customModuleProvider="target">
                                 <rect key="frame" x="16" y="16" width="568" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhT-Al-iJP">
@@ -26,6 +26,12 @@
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="-89" y="-16" width="46" height="30"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="-24" y="-40" width="46" height="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="startGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YPi-hy-ye4"/>
                                         </connections>
@@ -33,24 +39,68 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Q0F-xn-Yh8" secondAttribute="height" multiplier="1:1" id="igN-61-hiK"/>
+                                    <constraint firstAttribute="width" secondItem="Q0F-xn-Yh8" secondAttribute="height" multiplier="1:1" id="2kI-Y1-yOT"/>
+                                    <constraint firstAttribute="width" secondItem="Q0F-xn-Yh8" secondAttribute="height" multiplier="1:1" id="djh-Nb-6vf"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2kI-Y1-yOT"/>
+                                        <exclude reference="djh-Nb-6vf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="djh-Nb-6vf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2kI-Y1-yOT"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Q0F-xn-Yh8" secondAttribute="centerX" id="1Gc-97-b1Y"/>
-                            <constraint firstAttribute="centerY" secondItem="Q0F-xn-Yh8" secondAttribute="centerY" id="CUJ-O9-dFQ"/>
-                            <constraint firstAttribute="centerY" secondItem="Q0F-xn-Yh8" secondAttribute="centerY" id="JEi-H7-s3V"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Q0F-xn-Yh8" secondAttribute="trailing" id="P0C-UE-AHA"/>
-                            <constraint firstItem="Q0F-xn-Yh8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ZDd-WW-yuf"/>
-                            <constraint firstAttribute="centerY" secondItem="Q0F-xn-Yh8" secondAttribute="centerY" id="xgF-YE-n4t"/>
+                            <constraint firstItem="Q0F-xn-Yh8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-4" id="0x1-aN-GQF">
+                                <variation key="heightClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="Q0F-xn-Yh8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="45Y-1D-3ed">
+                                <variation key="heightClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Q0F-xn-Yh8" secondAttribute="bottom" constant="81" id="FKE-jF-wDr">
+                                <variation key="heightClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="Q0F-xn-Yh8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="WUJ-of-xdp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q0F-xn-Yh8" secondAttribute="trailing" constant="35" id="olW-HT-94I">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="Q0F-xn-Yh8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pOn-2U-khG">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="1Gc-97-b1Y"/>
-                                <exclude reference="CUJ-O9-dFQ"/>
-                                <exclude reference="JEi-H7-s3V"/>
+                                <exclude reference="0x1-aN-GQF"/>
+                                <exclude reference="45Y-1D-3ed"/>
+                                <exclude reference="WUJ-of-xdp"/>
+                                <exclude reference="olW-HT-94I"/>
+                                <exclude reference="pOn-2U-khG"/>
+                                <exclude reference="FKE-jF-wDr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="0x1-aN-GQF"/>
+                                <include reference="45Y-1D-3ed"/>
+                                <include reference="FKE-jF-wDr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="WUJ-of-xdp"/>
+                                <include reference="olW-HT-94I"/>
+                                <include reference="pOn-2U-khG"/>
                             </mask>
                         </variation>
                     </view>
@@ -60,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="301"/>
+            <point key="canvasLocation" x="250" y="300"/>
         </scene>
     </scenes>
 </document>
