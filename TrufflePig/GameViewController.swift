@@ -35,6 +35,11 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     }
     
     func renderNodesInField() {
+        let nodes = filterSubviewsForFieldNodes()
+        for node in nodes {
+            node.removeFromSuperview()
+        }
+        println(trufflefieldView.subviews.count)
         trufflefieldView.nodesAcrossWidth = fieldWidth
         trufflefieldView.nodesAcrossHeight = fieldHeight
         for (index, fieldNode) in enumerate(trufflefield) {
@@ -59,11 +64,31 @@ class GameViewController: UIViewController, FieldNodeDelegate {
 
             for nodeIndex in nodesToClear {
                 trufflefield[nodeIndex].pigHasDugHere = true
-                // TODO: the next line is very unstable. Filter using the class type and indexValue instead
-                if let fieldNode = trufflefieldView.subviews[nodeIndex + 1] as? FieldNodeView {
-                    fieldNode.removeButtonWithAnimation()
-                }
+                let nodes = filterSubviewsForFieldNodes()
+                nodes[nodeIndex].removeButtonWithAnimation()
             }
         }
+    }
+    
+    override func viewWillTransitionToSize(
+        size: CGSize,
+        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator
+        )
+    {
+        if trufflefield.count > 0 {
+            renderNodesInField()
+        }
+    }
+    
+    // TODO: Use generics for this method and pass in the type to filter??
+    private func filterSubviewsForFieldNodes() -> [FieldNodeView] {
+        var nodes = [FieldNodeView]()
+        // TODO: use filter here? or a find method if such a thing exists already?
+        for subview in trufflefieldView.subviews {
+            if let subviewNode = subview as? FieldNodeView {
+                nodes.append(subviewNode)
+            }
+        }
+        return nodes
     }
 }
