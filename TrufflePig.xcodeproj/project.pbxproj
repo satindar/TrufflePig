@@ -12,7 +12,7 @@
 		040327491AEC56BF00F5B9E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040327481AEC56BF00F5B9E7 /* Images.xcassets */; };
 		0403274C1AEC56BF00F5B9E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0403274A1AEC56BF00F5B9E7 /* LaunchScreen.xib */; };
 		040327581AEC56BF00F5B9E7 /* TrufflePigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040327571AEC56BF00F5B9E7 /* TrufflePigTests.swift */; };
-		040327621AEC59B400F5B9E7 /* Trufflefield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040327611AEC59B400F5B9E7 /* Trufflefield.swift */; };
+		040327621AEC59B400F5B9E7 /* Trufflemapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040327611AEC59B400F5B9E7 /* Trufflemapper.swift */; };
 		040327671AEC602000F5B9E7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040327661AEC602000F5B9E7 /* GameViewController.swift */; };
 		040327691AEC64D800F5B9E7 /* FieldNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040327681AEC64D800F5B9E7 /* FieldNodeView.swift */; };
 		0403276B1AEC69CB00F5B9E7 /* TrufflefieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403276A1AEC69CB00F5B9E7 /* TrufflefieldView.swift */; };
@@ -39,10 +39,11 @@
 		040327511AEC56BF00F5B9E7 /* TrufflePigTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrufflePigTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		040327561AEC56BF00F5B9E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		040327571AEC56BF00F5B9E7 /* TrufflePigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrufflePigTests.swift; sourceTree = "<group>"; };
-		040327611AEC59B400F5B9E7 /* Trufflefield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trufflefield.swift; sourceTree = "<group>"; };
+		040327611AEC59B400F5B9E7 /* Trufflemapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trufflemapper.swift; sourceTree = "<group>"; };
 		040327661AEC602000F5B9E7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		040327681AEC64D800F5B9E7 /* FieldNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNodeView.swift; sourceTree = "<group>"; };
 		0403276A1AEC69CB00F5B9E7 /* TrufflefieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrufflefieldView.swift; sourceTree = "<group>"; };
+		048F90051AF1EFFD006716D5 /* TrufflePiggy.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TrufflePiggy.playground; sourceTree = "<group>"; };
 		04FD53241AEF4F510090E003 /* FieldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +68,7 @@
 		040327331AEC56BF00F5B9E7 = {
 			isa = PBXGroup;
 			children = (
+				048F90051AF1EFFD006716D5 /* TrufflePiggy.playground */,
 				0403273E1AEC56BF00F5B9E7 /* TrufflePig */,
 				040327541AEC56BF00F5B9E7 /* TrufflePigTests */,
 				0403273D1AEC56BF00F5B9E7 /* Products */,
@@ -125,7 +127,7 @@
 		040327631AEC5B9000F5B9E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				040327611AEC59B400F5B9E7 /* Trufflefield.swift */,
+				040327611AEC59B400F5B9E7 /* Trufflemapper.swift */,
 				04FD53241AEF4F510090E003 /* FieldNode.swift */,
 			);
 			name = Models;
@@ -251,7 +253,7 @@
 				040327691AEC64D800F5B9E7 /* FieldNodeView.swift in Sources */,
 				0403276B1AEC69CB00F5B9E7 /* TrufflefieldView.swift in Sources */,
 				040327671AEC602000F5B9E7 /* GameViewController.swift in Sources */,
-				040327621AEC59B400F5B9E7 /* Trufflefield.swift in Sources */,
+				040327621AEC59B400F5B9E7 /* Trufflemapper.swift in Sources */,
 				04FD53251AEF4F510090E003 /* FieldNode.swift in Sources */,
 				040327421AEC56BF00F5B9E7 /* AppDelegate.swift in Sources */,
 			);

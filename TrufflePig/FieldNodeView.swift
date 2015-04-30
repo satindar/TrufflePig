@@ -16,6 +16,7 @@ class FieldNodeView: UIView {
     let item: Int
     let indexValue: Int
     var unearthed: Bool
+    let nodeButton: UIButton = UIButton()
 
     init(itemInNode: Int, selected: Bool, frame: CGRect, index: Int) {
         self.item = itemInNode
@@ -42,7 +43,7 @@ class FieldNodeView: UIView {
         layer.borderWidth = 0.5
         
         if unearthed == false {
-            let nodeButton = UIButton(frame: self.bounds)
+            nodeButton.frame = self.bounds
             nodeButton.backgroundColor = UIColor.whiteColor()
             nodeButton.layer.borderColor = UIColor.blackColor().CGColor
             nodeButton.layer.borderWidth = 0.75
@@ -52,9 +53,18 @@ class FieldNodeView: UIView {
     }
     
     func buttonClicked(sender: UIButton) {
-        delegate?.clickedFieldNodeWithIndexValue(self)
+        removeButtonWithAnimation()
+        if let viewDelegate = delegate {
+            viewDelegate.clickedFieldNodeWithIndexValue(self)
+        } else {
+            println("delegate has not been set")
+        }
+    }
+    
+    func removeButtonWithAnimation() {
+        // TODO: animate this removal
         self.unearthed = true
-        sender.removeFromSuperview()
+        nodeButton.removeFromSuperview()
     }
     
     func textForItemValue() -> String {

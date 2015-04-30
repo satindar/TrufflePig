@@ -1,5 +1,5 @@
 //
-//  TruffleField.swift
+//  Trufflemapper.swift
 //  TrufflePig
 //
 //  Created by Satindar Dhillon on 4/25/15.
@@ -8,10 +8,11 @@
 
 import Foundation
 
-class Trufflefield {
+class Trufflemapper {
     let fieldWidth: Int
     let fieldHeight: Int
     let numberOfTruffles: Int
+    var clearedNodes = [Int:Bool]()
     
     lazy var plantedField: [Int] = { return self.plantTrufflesInField() }()
     
@@ -33,10 +34,8 @@ class Trufflefield {
             let nodesTouchingTruffle = nodesSurroundingLocation(location)
             
             for node in nodesTouchingTruffle {
-                if node > -1 && node < fieldHeight * fieldWidth {
-                    if field[node] >= 0 {
-                        field[node] = field[node] + 1
-                    }
+                if field[node] >= 0 {
+                    field[node] = field[node] + 1
                 }
             }
         }
@@ -44,7 +43,7 @@ class Trufflefield {
     }
     
     func sampleValuesLessThan(maxValue: Int, ofCount count: Int) -> [Int] {
-        var field = (0...maxValue).map { $0 } // TODO: use dict for performance? (faster to remove)
+        var field = (0...maxValue).map { $0 }
         var truffleIndices = [Int]()
         
         for index in (1...count) {
@@ -74,7 +73,34 @@ class Trufflefield {
         nodes.append(truffleIndex - fieldWidth)
         nodes.append(truffleIndex + fieldWidth)
         
-        return nodes
+        let arr = nodes.filter({ $0 >= 0 }).filter({ $0 < (self.fieldHeight * self.fieldWidth) })
+        println(arr)
+        return arr
     }
+    
+    
+    func emptyNodesSurroundingCurrentNode(nodeIndex: Int) -> [Int] {
+        var nodesToClear = [Int]()
+        
+        if plantedField[nodeIndex] != 0 {
+            clearedNodes[nodeIndex] = true
+            return nodesToClear
+        }
+       
+        for node in nodesSurroundingLocation(nodeIndex) {
+            if clearedNodes[node] == nil && plantedField[node] > -1 {
+                nodesToClear.append(node)
+                clearedNodes[node] = true
+                
+                if plantedField[node] == 0 {
+                    for linkedNode in emptyNodesSurroundingCurrentNode(node) {
+                        nodesToClear.append(linkedNode)
+                    }
+                }
+            }
+        }
+        return nodesToClear
+    }
+    
 }
 
