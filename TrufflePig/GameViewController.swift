@@ -83,12 +83,15 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         
         if let mapper = truffleMapper {
             let nodesToClear: [Int] = mapper.emptyNodesSurroundingCurrentNode(index)
-
-            for nodeIndex in nodesToClear {
-                trufflefield[nodeIndex].pigHasDugHere = true
-                let nodes = filterSubviewsForFieldNodes()
-                nodes[nodeIndex].removeButtonWithAnimation()
-            }
+            removeButtons(nodesToClear)
+        }
+    }
+    
+    func removeButtons(indexesOfButtonsToRemove: [Int]) {
+            for nodeIndex in indexesOfButtonsToRemove {
+            trufflefield[nodeIndex].pigHasDugHere = true
+            let nodes = filterSubviewsForFieldNodes()
+            nodes[nodeIndex].removeButtonWithAnimation()
         }
     }
     
@@ -102,7 +105,12 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         endGameButton.hidden = true
         newGameControls.hidden = false
         trufflefield = []
-        renderNodesInField()
+        showTruffles()
+        renderNodesInField() // TODO: change this to showAllTruffles
+    }
+    
+    private func showTruffles() {
+        
     }
     
     override func viewWillTransitionToSize(
