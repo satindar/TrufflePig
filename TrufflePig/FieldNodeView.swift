@@ -36,7 +36,11 @@ class FieldNodeView: UIView {
         label.font = UIFont.systemFontOfSize(UIFont.systemFontSize())
         label.textAlignment = .Center
         label.text = textForItemValue()
-        label.textColor = UIColor.blackColor()
+        if item == -1 {
+            label.textColor = UIColor.redColor()
+        } else {
+            label.textColor = UIColor.blackColor()
+        }
         self.addSubview(label)
         
         layer.borderColor = UIColor.blackColor().CGColor

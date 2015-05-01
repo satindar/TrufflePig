@@ -11,12 +11,14 @@ import UIKit
 class GameViewController: UIViewController, FieldNodeDelegate {
     
     @IBOutlet weak var newGameControls: UIView!
+    @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var totalClicks: UILabel!
     @IBOutlet weak var trufflesRemaining: UILabel!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var trufflefieldView: TrufflefieldView!
     @IBOutlet weak var endGameButton: UIButton!
     
+    @IBOutlet weak var endGameButtonLandscape: UIButton!
     var fieldWidth = 15
     var fieldHeight = 15
     var numberOfTruffles = 25
@@ -40,7 +42,9 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     
     func newGame() {
         newGameControls?.hidden = true
+        startGameButton?.hidden = true
         endGameButton?.hidden = false
+        endGameButtonLandscape?.hidden = false
         truffleMapper = Trufflemapper(
             numberOfTruffles: numberOfTruffles,
             fieldWidth: fieldWidth,
@@ -100,10 +104,14 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     }
     
     private func endGame() {
-        endGameButton.hidden = true
         newGameControls.hidden = false
+        startGameButton.hidden = false
+        endGameButton.hidden = true
+        endGameButtonLandscape.hidden = true
+        
         showTruffles()
         trufflefield = []
+        // TODO: deactivate buttons
     }
     
     private func showTruffles() {
