@@ -13,6 +13,7 @@ class Trufflemapper {
     let fieldHeight: Int
     let numberOfTruffles: Int
     var clearedNodes = [Int:Bool]()
+    var truffleLocations = [Int]()
     
     lazy var plantedField: [Int] = { return self.plantTrufflesInField() }()
     
@@ -24,11 +25,8 @@ class Trufflemapper {
     
     func plantTrufflesInField() -> [Int] {
         var field = Array(count: fieldHeight * fieldWidth, repeatedValue: 0)
-        let truffleLocations = sampleValuesLessThan(
-            fieldHeight * fieldWidth,
-            ofCount: numberOfTruffles
-        )
-        
+        truffleLocations = sampleValuesLessThan(fieldHeight * fieldWidth, ofCount: numberOfTruffles)
+
         for location in truffleLocations {
             field[location] = -1
             let nodesTouchingTruffle = nodesSurroundingLocation(location)
