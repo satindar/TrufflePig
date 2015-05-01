@@ -73,7 +73,7 @@ class Trufflemapper {
         nodes.append(truffleIndex - fieldWidth)
         nodes.append(truffleIndex + fieldWidth)
         
-        return nodes.filter({ $0 >= 0 }).filter({ $0 < (self.fieldHeight * self.fieldWidth) })
+        return nodes.filter({ $0 >= 0 && $0 < (self.fieldHeight * self.fieldWidth) })
     }
     
     
@@ -100,4 +100,3 @@ class Trufflemapper {
         return nodesToClear
     }
 }
-

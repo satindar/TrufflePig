@@ -17,6 +17,7 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     let numberOfTruffles = 20
     var truffleMapper: Trufflemapper?
     var trufflefield: [FieldNode] = []
+    var shouldUpdateBoard: Bool = false
     
     @IBAction func startGame(sender: UIButton) {
         newGame()
@@ -39,7 +40,6 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         for node in nodes {
             node.removeFromSuperview()
         }
-        println(trufflefieldView.subviews.count)
         trufflefieldView.nodesAcrossWidth = fieldWidth
         trufflefieldView.nodesAcrossHeight = fieldHeight
         for (index, fieldNode) in enumerate(trufflefield) {
@@ -76,7 +76,14 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         )
     {
         if trufflefield.count > 0 {
+            shouldUpdateBoard = true
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if shouldUpdateBoard {
             renderNodesInField()
+            shouldUpdateBoard = false
         }
     }
     
