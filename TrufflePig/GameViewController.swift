@@ -111,7 +111,11 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         
         showTruffles()
         trufflefield = []
-        // TODO: deactivate buttons
+        for subview in trufflefieldView.subviews {
+            if let subviewNode = subview as? FieldNodeView {
+                subviewNode.deactivate()
+            }
+        }
     }
     
     private func showTruffles() {

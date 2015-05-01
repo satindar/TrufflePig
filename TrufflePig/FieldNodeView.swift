@@ -71,6 +71,10 @@ class FieldNodeView: UIView {
         nodeButton.removeFromSuperview()
     }
     
+    func deactivate() {
+        nodeButton.enabled = false
+    }
+    
     func textForItemValue() -> String {
         switch (item) {
         case 0:
