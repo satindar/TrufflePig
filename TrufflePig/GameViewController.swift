@@ -10,11 +10,15 @@ import UIKit
 
 class GameViewController: UIViewController, FieldNodeDelegate {
     
+    @IBOutlet weak var newGameControls: UIView!
+    @IBOutlet weak var totalClicks: UILabel!
+    @IBOutlet weak var trufflesRemaining: UILabel!
+    @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var trufflefieldView: TrufflefieldView!
     
     var fieldWidth = 15
     var fieldHeight = 15
-    let numberOfTruffles = 20
+    var numberOfTruffles = 20
     var truffleMapper: Trufflemapper?
     var trufflefield: [FieldNode] = []
     var shouldUpdateField: Bool = false
@@ -23,7 +27,15 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         newGame()
     }
     
+    @IBAction func difficultyLevelChanged(sender: UISlider) {
+        fieldWidth = Int((sender.value * 10) + 10) // set between 10 and 20
+        fieldHeight = fieldWidth
+        numberOfTruffles = Int((sender.value * 30) + 10)  // set between 10 and 40
+    }
+    
+    
     func newGame() {
+        newGameControls?.hidden = true
         truffleMapper = Trufflemapper(
             numberOfTruffles: numberOfTruffles,
             fieldWidth: fieldWidth,
