@@ -19,7 +19,7 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     
     var fieldWidth = 15
     var fieldHeight = 15
-    var numberOfTruffles = 20
+    var numberOfTruffles = 25
     var truffleMapper: Trufflemapper?
     var trufflefield: [FieldNode] = []
     var shouldUpdateField: Bool = false
@@ -87,7 +87,6 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     }
     
     func removeButtons(indexesOfButtonsToRemove: [Int]) {
-        println(indexesOfButtonsToRemove)
         for nodeIndex in indexesOfButtonsToRemove {
             trufflefield[nodeIndex].pigHasDugHere = true
             let nodes = filterSubviewsForFieldNodes()
@@ -96,8 +95,7 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     }
     
     private func playerLosesGame() {
-        // TODO: throw bacon or something and reset props
-        println("you lose!")
+        // TODO: show a dramatic animation or something
         endGame()
     }
     
@@ -109,7 +107,6 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     }
     
     private func showTruffles() {
-        // get indexes of truffles
         if let mapper = truffleMapper {
             let nodesToClear: [Int] = mapper.truffleLocations
             removeButtons(nodesToClear)

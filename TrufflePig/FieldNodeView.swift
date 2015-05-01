@@ -53,6 +53,7 @@ class FieldNodeView: UIView {
     }
     
     func buttonClicked(sender: UIButton) {
+        removeButtonWithAnimation()
         if let viewDelegate = delegate {
             viewDelegate.unearthedFieldNode(self)
         } else {
