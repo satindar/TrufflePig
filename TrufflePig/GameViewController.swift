@@ -15,6 +15,7 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     @IBOutlet weak var trufflesRemaining: UILabel!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var trufflefieldView: TrufflefieldView!
+    @IBOutlet weak var endGameButton: UIButton!
     
     var fieldWidth = 15
     var fieldHeight = 15
@@ -27,15 +28,19 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         newGame()
     }
     
+    @IBAction func endGameButtonPressed(sender: UIButton) {
+        endGame()
+    }
+    
     @IBAction func difficultyLevelChanged(sender: UISlider) {
         fieldWidth = Int((sender.value * 10) + 10) // set between 10 and 20
         fieldHeight = fieldWidth
         numberOfTruffles = Int((sender.value * 30) + 10)  // set between 10 and 40
     }
     
-    
     func newGame() {
         newGameControls?.hidden = true
+        endGameButton?.hidden = false
         truffleMapper = Trufflemapper(
             numberOfTruffles: numberOfTruffles,
             fieldWidth: fieldWidth,
@@ -90,6 +95,14 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     private func playerLosesGame() {
         // TODO: throw bacon or something and reset props
         println("you lose!")
+        endGame()
+    }
+    
+    private func endGame() {
+        endGameButton.hidden = true
+        newGameControls.hidden = false
+        trufflefield = []
+        renderNodesInField()
     }
     
     override func viewWillTransitionToSize(

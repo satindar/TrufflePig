@@ -169,17 +169,43 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp9-Sx-S1t">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5536005645861658" blue="0.48156990550387291" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ylW-in-3j6"/>
+                                </constraints>
+                                <state key="normal" title="End Game">
+                                    <color key="titleColor" red="0.1019607843" green="0.21960784310000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ylW-in-3j6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ylW-in-3j6"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="endGameButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hUC-iM-AAn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Q0F-xn-Yh8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-4" id="0x1-aN-GQF">
                                 <variation key="heightClass=compact" constant="8"/>
                             </constraint>
+                            <constraint firstItem="Pp9-Sx-S1t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="1Ve-WY-eu4"/>
                             <constraint firstItem="VbR-P3-zFI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="1qL-Bb-WT0"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Pp9-Sx-S1t" secondAttribute="bottom" constant="20" id="2Co-dD-GtD"/>
                             <constraint firstAttribute="centerX" secondItem="Wdz-mi-Yrf" secondAttribute="centerX" id="2Gc-6Q-au5"/>
                             <constraint firstItem="Q0F-xn-Yh8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="45Y-1D-3ed">
                                 <variation key="heightClass=compact" constant="8"/>
                             </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pp9-Sx-S1t" secondAttribute="trailing" constant="8" id="4Ag-2R-PGX"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Q0F-xn-Yh8" secondAttribute="bottom" constant="81" id="FKE-jF-wDr">
                                 <variation key="heightClass=compact" constant="8"/>
                             </constraint>
@@ -218,6 +244,7 @@
                                 <exclude reference="Vaz-qs-kRS"/>
                                 <exclude reference="XBv-TF-MTQ"/>
                                 <exclude reference="VbR-P3-zFI"/>
+                                <exclude reference="Pp9-Sx-S1t"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0x1-aN-GQF"/>
@@ -236,6 +263,9 @@
                                 <exclude reference="1qL-Bb-WT0"/>
                                 <exclude reference="P5i-vW-v6M"/>
                                 <exclude reference="zt7-ff-oXM"/>
+                                <exclude reference="1Ve-WY-eu4"/>
+                                <exclude reference="4Ag-2R-PGX"/>
+                                <exclude reference="2Co-dD-GtD"/>
                                 <exclude reference="FKE-jF-wDr"/>
                             </mask>
                         </variation>
@@ -252,6 +282,7 @@
                                 <include reference="Vaz-qs-kRS"/>
                                 <include reference="XBv-TF-MTQ"/>
                                 <include reference="VbR-P3-zFI"/>
+                                <include reference="Pp9-Sx-S1t"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="WbY-w1-Cae"/>
@@ -268,11 +299,15 @@
                                 <include reference="1qL-Bb-WT0"/>
                                 <include reference="P5i-vW-v6M"/>
                                 <include reference="zt7-ff-oXM"/>
+                                <include reference="1Ve-WY-eu4"/>
+                                <include reference="4Ag-2R-PGX"/>
+                                <include reference="2Co-dD-GtD"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="duration" destination="Wdz-mi-Yrf" id="ZOH-40-PTc"/>
+                        <outlet property="endGameButton" destination="Pp9-Sx-S1t" id="O5l-l0-Q6O"/>
                         <outlet property="newGameControls" destination="VbR-P3-zFI" id="Bu1-Ob-KiQ"/>
                         <outlet property="totalClicks" destination="XBv-TF-MTQ" id="4DM-U1-rbb"/>
                         <outlet property="trufflefieldView" destination="Q0F-xn-Yh8" id="Dyf-y3-HqH"/>
