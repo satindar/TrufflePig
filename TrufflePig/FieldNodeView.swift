@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FieldNodeDelegate: class {
-    func clickedFieldNodeWithIndexValue(sender: FieldNodeView)
+    func unearthedFieldNode(sender: FieldNodeView)
 }
 
 class FieldNodeView: UIView {
@@ -55,7 +55,7 @@ class FieldNodeView: UIView {
     func buttonClicked(sender: UIButton) {
         removeButtonWithAnimation()
         if let viewDelegate = delegate {
-            viewDelegate.clickedFieldNodeWithIndexValue(self)
+            viewDelegate.unearthedFieldNode(self)
         } else {
             println("delegate has not been set")
         }

@@ -17,7 +17,7 @@ class GameViewController: UIViewController, FieldNodeDelegate {
     let numberOfTruffles = 20
     var truffleMapper: Trufflemapper?
     var trufflefield: [FieldNode] = []
-    var shouldUpdateBoard: Bool = false
+    var shouldUpdateField: Bool = false
     
     @IBAction func startGame(sender: UIButton) {
         newGame()
@@ -55,8 +55,13 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         }
     }
     
-    func clickedFieldNodeWithIndexValue(sender: FieldNodeView) {
+    func unearthedFieldNode(sender: FieldNodeView) {
         let index = sender.indexValue
+        if trufflefield[index].isTruffle() {
+            playerLosesGame()
+            return
+        }
+        
         trufflefield[index].pigHasDugHere = true
         
         if let mapper = truffleMapper {
@@ -70,20 +75,25 @@ class GameViewController: UIViewController, FieldNodeDelegate {
         }
     }
     
+    private func playerLosesGame() {
+        // TODO: throw bacon or something and reset props
+        println("you lose!")
+    }
+    
     override func viewWillTransitionToSize(
         size: CGSize,
         withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator
         )
     {
         if trufflefield.count > 0 {
-            shouldUpdateBoard = true
+            shouldUpdateField = true
         }
     }
     
     override func viewDidLayoutSubviews() {
-        if shouldUpdateBoard {
+        if shouldUpdateField {
             renderNodesInField()
-            shouldUpdateBoard = false
+            shouldUpdateField = false
         }
     }
     
