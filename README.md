@@ -4,4 +4,4 @@ This is an implementation of Minesweeper written in an early version of iOS (a p
 
 Wrote this while working at Monsoon as evidence of my iOS skills. I was writing mainly Ruby and Javascript and wanted to transition to iOS. 
 
-This startegy worked! We got acquired by Capital One and I was moved to an iOS project when the transition was compelte.
+This strategy worked! We got acquired by Capital One and I was moved to an iOS project when the transition was complete.
